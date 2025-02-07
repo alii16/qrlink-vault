@@ -21,11 +21,9 @@ class QRCodeController extends Controller
 
     public function generateQrCode(Request $request)
     {
-        // Ambil input dari user
         $text = $request->input('qrCode'); 
-        $size = $request->input('size', 150); // Default size tetap 150 jika tidak dipilih
-    
-        // Pastikan tidak kosong, jika kosong pakai default link
+        $size = $request->input('size', 150); 
+
         if (empty($text)) {
             $text = "https://alii16.github.io/portofolio/";
         }

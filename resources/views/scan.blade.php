@@ -175,7 +175,7 @@
             console.log(`Code matched = ${decodedText}`, decodedResult);
         
             let resultText = document.getElementById("decodedText");
-            resultText.textContent = decodedText; // Tampilkan hasil scan di tag <p>
+            resultText.textContent = decodedText; 
         }
 
         function onScanFailure(error) {
