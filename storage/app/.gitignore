@@ -1,3 +1,8 @@
 *
-!public/
+# Abaikan semua isi dalam storage/app/public/
+storage/app/public/*
+
+# Kecualikan folder qrcodes agar tetap dilacak Git
+!storage/app/public/qrcodes/
+
 !.gitignore

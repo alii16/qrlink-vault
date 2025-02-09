@@ -119,6 +119,10 @@
             font-size: 12px;
             color: #000;
         }
+        .download {
+            font-size: 12px;
+            margin-top: 5px;
+        }
         .header {
             position: absolute;
             top: 20px;
@@ -153,19 +157,21 @@
 </head>
 <body>
     <div class="header">ALI POLANUNU</div>
+    
     <div class="container">
         <div class="left-section">
             <h1>Welcome To</h1>
             <h2>QR Code Generator</h2>
             <p>Generate your text or URL to QR Code</p>
             <a href="#" class="button" onclick="window.location.href='/scan'">QR CODE SCANNER</a>
+            <a href="{{ route('history') }}" class="button" style="margin-left: 10px">YOUR HISTORY</a>
         </div>
         <div class="form-container">
             <h3>QR Code Generator</h3>
             <form id="qr-form" action="{{ route('generate-qr-code') }}" method="POST">
                 @csrf
                 <label for="text-url">Enter Text or URL</label>
-                <input type="text" class="input-text" id="qr-input" name="qrCode" placeholder="Type something">
+                <input type="text" class="input-text" id="qr-input" name="qrCode" placeholder="Type something" required>
                 <label for="size">Qr Code Size</label>
                 <select id="size" name="size">
                     <option value="100">100x100</option>
@@ -175,12 +181,18 @@
                     <option value="300">300x300</option>
                 </select>
                 <button type="submit">GENERATE QR CODE</button>
-                @if (Session::has('qrCode'))
                 <div class="result">
-                    <p>Here's your QR Code ({{ Session::get('size') }} x {{ Session::get('size') }})👇</p>
-                    {!! Session::get('qrCode') !!}
+                    @if(session('qrCodePath'))
+                        <p>QR Code ({{ session('size') }}x{{ session('size') }}):</p>
+                        <img src="{{ asset('storage/qrcodes/' . basename(session('qrCodePath'))) }}" alt="QR Code">
+                        <br>
+                        <a href="{{ route('download-qr', ['filename' => basename(session('qrCodePath'))]) }}" 
+                            class="download" download>
+                             Download QR Code
+                        </a>
+                    @endif
                 </div>
-                @endif
+            
             </form>
         </div>
     </div>

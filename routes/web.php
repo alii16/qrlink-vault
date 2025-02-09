@@ -25,4 +25,10 @@ Route::controller(QRCodeController::class)->group(function () {
     Route::post('generate-qr-code', 'generateQrCode')->name('generate-qr-code');
 });
 
-Route::get('/scan', [QRCodeController::class, 'scan'])->name('scan');
+Route::get('/download-qr/{filename}', [QRCodeController::class, 'downloadQrCode'])->name('download-qr');
+
+Route::get('/scan', function () {
+    return view('scan');
+});
+
+Route::get('/history', [QRCodeController::class, 'history'])->name('history');
