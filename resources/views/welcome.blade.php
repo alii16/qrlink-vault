@@ -6,6 +6,7 @@
     <title>QR Code Generator</title>
     <meta name="description" content="">
     <title>QR Code Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -129,7 +130,107 @@
             left: 10%;
             font-size: 18px;
             font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            align-items: center;
         }
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .nav-link {
+            position: relative;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background: #FF2D20;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover {
+            color: #FF2D20;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        } 
+
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .gradient-text {
+            font-weight: bold;
+            display: inline-block;
+            background: linear-gradient(to right, blue, purple, pink);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 3s linear infinite alternate;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .social-icons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a i {
+            font-size: 18px;
+        }
+
+        /* Warna sesuai brand */
+        .social-icons a:nth-child(1) { color: #1877F2; } /* Facebook */
+        .social-icons a:nth-child(2) { color: #E4405F; } /* Instagram */
+        .social-icons a:nth-child(3) { color: #1DA1F2; } /* Twitter */
+        .social-icons a:nth-child(4) { color: #333; } /* GitHub */
+
+        /* Hover Effect */
+        .social-icons a:hover {
+            opacity: 0.7;
+        }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -156,7 +257,28 @@
     </style>
 </head>
 <body>
-    <div class="header">ALI POLANUNU</div>
+    <div class="header">
+        <div class="flex">
+            <img src="{{ asset('image/logo.png')}}" alt="" class="logo">
+        <span>ALI POLANUNU</span>
+        </div>
+        @if (Route::has('login'))
+            <nav class="nav-links flex space-x-4">
+                @auth
+                    <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}" class="nav-link">Log in</a>
+                    
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="nav-link" style="margin-left: 20px">Register</a>
+                    @endif
+                @endauth
+            </nav>
+        @endif
+    
+    </div>
+    
+    
     
     <div class="container">
         <div class="left-section">
@@ -196,5 +318,16 @@
             </form>
         </div>
     </div>
+    <footer>
+        <p>Made with 💡 by <span class="gradient-text">Ali Polanunu</span></p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/YOUR_FA_KIT.js" crossorigin="anonymous"></script>
+
 </body>
 </html>

@@ -10,20 +10,20 @@ class QRCodeController extends Controller
 {
     public function index()
     {
-        // URL Default untuk QR Code
-        $defaultUrl = "https://alii16.github.io/portofolio/";
-        $qrCodePath = $this->generateAndSaveQrCode($defaultUrl, 200);
 
-        return view('welcome', compact('qrCodePath', 'defaultUrl'));
+        $defaultUrl = "https://alii16.github.io/portofolio/";
+        $qrCodePath = $this->generateAndSaveQrCode($defaultUrl, 200, 1);
+
+        return view('index', compact('qrCodePath', 'defaultUrl'));
     }
 
     public function generateQrCode(Request $request)
     {
         $text = $request->input('qrCode', "https://alii16.github.io/portofolio/");
         $size = $request->input('size', 150);
+        $margin = 1; // Tambahkan margin
 
-        // Simpan QR Code ke storage
-        $qrCodePath = $this->generateAndSaveQrCode($text, $size);
+        $qrCodePath = $this->generateAndSaveQrCode($text, $size, $margin);
 
         // Simpan data QR Code ke session history
         $history = session('qr_history', []);
@@ -42,25 +42,23 @@ class QRCodeController extends Controller
         ]);
     }
 
-
-    private function generateAndSaveQrCode($text, $size)
+    private function generateAndSaveQrCode($text, $size, $margin)
     {
-        // Tambahkan ukuran ke nama file agar unik
-        $fileName = md5($text . $size) . ".png";
+
+        $fileName = md5($text . $size . $margin) . ".png";
         $filePath = "public/qrcodes/" . $fileName;
-    
+
         // Jika file belum ada, buat dan simpan
         if (!Storage::exists($filePath)) {
             $qrCode = QrCode::format('png')
-                ->size($size) // Ukuran QR Code
+                ->size($size)
+                ->margin($margin)
                 ->errorCorrection('H')
                 ->generate($text);
-            
-            // Simpan QR Code ke storage Laravel
+
             Storage::put($filePath, $qrCode);
         }
-    
-        // Mengembalikan URL yang dapat diakses dari browser
+
         return "storage/qrcodes/" . $fileName;
     }
 
@@ -75,15 +73,49 @@ class QRCodeController extends Controller
         return response()->download($filePath);
     }
 
-    public function history()
+    public function history(Request $request)
     {
-        $history = session('qr_history', []);
-        return view('history', compact('history'));
+        $history = session()->get('qr_history', []);
+
+        if (!is_array($history)) {
+            $history = [];
+        }
+
+        $perPage = 6;
+
+        $page = max(1, (int) $request->query('page', 1));
+
+        $totalPages = ceil(count($history) / $perPage);
+
+        $chunks = array_chunk($history, $perPage);
+
+        $currentData = $chunks[$page - 1] ?? [];
+
+        return view('data', compact('currentData', 'page', 'totalPages'));
+    }
+
+    public function clearHistory()
+    {
+        $history = session()->get('qr_history', []);
+
+        if (!empty($history)) {
+
+            foreach ($history as $item) {
+                $filePath = storage_path('app/public/qrcodes/' . basename($item['qrCodePath']));
+
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            }
+        }
+
+        session()->forget('qr_history');
+
+        return redirect()->route('history')->with('success', 'History dan QR code terkait berhasil dihapus.');
     }
 
     public function scan()
     {
-        return view ('/scan');
+        return view('/scanner');
     }
-    
 }
