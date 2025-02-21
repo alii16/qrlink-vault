@@ -103,17 +103,23 @@ The application will be available at `http://127.0.0.1:8000/`.
 
 ![Screenshot 2025-02-21 211648](https://github.com/user-attachments/assets/0d40e585-1783-4efe-ab00-09497f5c10d8)
 
+---
+
 ## ✨QR Code Scanner
 
 ![Screenshot 2025-02-21 213419](https://github.com/user-attachments/assets/0a8955e5-a023-4560-9593-e866ff7b0eb7)
 
 ![Screenshot 2025-02-21 213510](https://github.com/user-attachments/assets/f9600dde-378c-425b-8a48-5283a073db4c)
 
+---
+
 ## 🕜QR Code History
 
 ![Screenshot 2025-02-21 213643](https://github.com/user-attachments/assets/01b6f055-826f-41c3-b02c-f08db8677b97)
 
 ![Screenshot 2025-02-21 213635](https://github.com/user-attachments/assets/f55e6903-23a7-4644-91ce-8b8bb377212a)
+
+---
 
 ## 🤖Captcha
 
