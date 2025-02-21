@@ -40,6 +40,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 - 📝 **QR Code History**
 - ⬇️ **Download QR Code**
 - 🔍 **BarCode Scanner**
+- 🤖 **Captcha**
 
 ## 🛠️Installation and Setup
 
@@ -47,13 +48,13 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 Clone the project using the following command:
 
 ```sh
-git clone https://github.com/alii16/laravel-qrcde-generator-v2.git
+git clone https://github.com/alii16/captcha-uas-kipto.git
 ```
 
 ### 2. Navigate to Project Directory
 
 ```sh
-cd laravel-qrcde-generator-v2
+cd captcha-uas-kripto
 ```
 
 ### 3. Install Dependencies
@@ -98,25 +99,25 @@ The application will be available at `http://127.0.0.1:8000/`.
 
 ## 🚀QR Code Generator
 
-<p align="center">
-    <img src="https://i.imgur.com/MXk58hn.png" width="400" alt="Screenshot 1">
-    <img src="https://i.imgur.com/d3GlCvp.png" width="400" alt="Screenshot 2">
-</p>
+![Screenshot 2025-02-17 162221](https://github.com/user-attachments/assets/c58ae3ec-1614-4a4d-a9cf-f19568e58ad0)
 
-<p align="center">
-    <img src="https://i.imgur.com/Ljuiy3A.png" width="400" alt="Screenshot 1">
-    <img src="https://i.imgur.com/JcA5Coy.png" width="400" alt="Screenshot 2">
-</p>
+![Screenshot 2025-02-21 211648](https://github.com/user-attachments/assets/0d40e585-1783-4efe-ab00-09497f5c10d8)
 
 ## ✨QR Code Scanner
 
-<p align="center">
-    <img src="https://i.imgur.com/IquCV6N.png" width="400" alt="Screenshot 1">
-    <img src="https://i.imgur.com/aiFyHSC.png" width="400" alt="Screenshot 2">
-</p>
+![Screenshot 2025-02-21 213419](https://github.com/user-attachments/assets/0a8955e5-a023-4560-9593-e866ff7b0eb7)
 
-<p align="center">
-    <img src="https://i.imgur.com/J7vYsqy.png" width="400" alt="Screenshot 1">
-    <img src="https://i.imgur.com/pBrz5az.png" width="400" alt="Screenshot 2">
-</p>
+![Screenshot 2025-02-21 213510](https://github.com/user-attachments/assets/f9600dde-378c-425b-8a48-5283a073db4c)
+
+## 🕜QR Code History
+
+![Screenshot 2025-02-21 213643](https://github.com/user-attachments/assets/01b6f055-826f-41c3-b02c-f08db8677b97)
+
+![Screenshot 2025-02-21 213635](https://github.com/user-attachments/assets/f55e6903-23a7-4644-91ce-8b8bb377212a)
+
+## 🤖Captcha
+
+![Screenshot 2025-02-21 211737](https://github.com/user-attachments/assets/fa21500a-c2b9-486a-a3e5-431d9f34ce29)
+
+![Screenshot 2025-02-21 213833](https://github.com/user-attachments/assets/ab81cc3d-3df5-4008-9632-981486928ee2)
 
