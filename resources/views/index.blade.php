@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>QR Code Generator</title>
+  <title>QRLinkVault</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -179,6 +179,7 @@
                 </div>
                 <div class="output mb-0">
                   <p style="color: #fff; margin-bottom: 15px;">QR Code ({{ session('size') }}x{{ session('size') }}):</p>
+                  @dump(session('qrCodePath'))
                   <img src="{{ asset('storage/qrcodes/' . basename(session('qrCodePath'))) }}" alt="QR Code" style="margin-bottom: 10px;">
                   <br>
                   <br>
