@@ -48,13 +48,13 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 Clone the project using the following command:
 
 ```sh
-git clone https://github.com/alii16/captcha-uas-kipto.git
+git clone https://github.com/alii16/qrlink-vault.git
 ```
 
 ### 2. Navigate to Project Directory
 
 ```sh
-cd captcha-uas-kripto
+cd qrlink-vault
 ```
 
 ### 3. Install Dependencies
